@@ -153,8 +153,12 @@ We can compute the area using the Midpoint Rule as follows.
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# Write code for answer here.}
-\hldef{trap.points} \hlkwb{<-} \hlkwd{seq}\hldef{(}\hlkwc{from} \hldef{= a,} \hlkwc{to} \hldef{= b,} \hlkwc{by}\hldef{=delta.x)}
+\hldef{trap.points} \hlkwb{<-}  \hldef{a} \hlopt{+} \hlnum{0}\hlopt{:}\hlnum{99}\hlopt{*}\hldef{(delta.x)}
+\hldef{(trap.area} \hlkwb{<-} \hldef{(delta.x}\hlopt{/}\hlnum{2}\hldef{)}\hlopt{*}\hldef{(}\hlkwd{integrand}\hldef{(a)}\hlopt{+}\hlkwd{sum}\hldef{(}\hlnum{2}\hlopt{*}\hlkwd{integrand}\hldef{(trap.points))}\hlopt{+}\hlkwd{integrand}\hldef{(b)))}
 \end{alltt}
+\begin{verbatim}
+## [1] 8.8064
+\end{verbatim}
 \end{kframe}
 \end{knitrout}
   \item Write a function that takes \texttt{a}, \texttt{b}, and number of 

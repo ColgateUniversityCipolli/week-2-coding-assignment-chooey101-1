@@ -69,8 +69,9 @@ mid.points <- (left.points+right.points)/2
   \textbf{Solution:}
 <<size="scriptsize", warning=FALSE, message=FALSE>>=
 # Write code for answer here.
-trap.points <-  a + 0:99*(delta.x)
-(trap.area <- (delta.x/2)*(integrand(a)+sum(2*integrand(trap.points))+integrand(b)))
+right.int <- integrand(right.points)
+left.int <- integrand(left.points)
+(area <- sum(delta.x*(right.int+left.int)/2))
 @
   \item Write a function that takes \texttt{a}, \texttt{b}, and number of 
   rectangles (\texttt{n.rect}) in as input and returns the Trapezoidial Rule 
@@ -113,8 +114,9 @@ area <- sum(delta.x*(integrand(right.points)))
 area <- sum(delta.x*(integrand(mid.points)))
   }else if(method == "Trapezoidial"){
    (delta.x <- (b-a)/n.rect)
-  trap.points <-  a + 0:99*(delta.x)
-area <- (delta.x/2)*(integrand(a)+sum(2*integrand(trap.points))+integrand(b))
+ right.int <- integrand(right.points)
+left.int <- integrand(left.points)
+area <- sum(delta.x*(right.int+left.int)/2)
   }else{
     stop("Please select a valid method (e.g., 'Left', 'Right', 'Midpoint', 'Trapezoidial')")
   }

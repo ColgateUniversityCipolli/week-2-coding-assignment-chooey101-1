@@ -153,11 +153,12 @@ We can compute the area using the Midpoint Rule as follows.
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlcom{# Write code for answer here.}
-\hldef{trap.points} \hlkwb{<-}  \hldef{a} \hlopt{+} \hlnum{0}\hlopt{:}\hlnum{99}\hlopt{*}\hldef{(delta.x)}
-\hldef{(trap.area} \hlkwb{<-} \hldef{(delta.x}\hlopt{/}\hlnum{2}\hldef{)}\hlopt{*}\hldef{(}\hlkwd{integrand}\hldef{(a)}\hlopt{+}\hlkwd{sum}\hldef{(}\hlnum{2}\hlopt{*}\hlkwd{integrand}\hldef{(trap.points))}\hlopt{+}\hlkwd{integrand}\hldef{(b)))}
+\hldef{right.int} \hlkwb{<-} \hlkwd{integrand}\hldef{(right.points)}
+\hldef{left.int} \hlkwb{<-} \hlkwd{integrand}\hldef{(left.points)}
+\hldef{(area} \hlkwb{<-} \hlkwd{sum}\hldef{(delta.x}\hlopt{*}\hldef{(right.int}\hlopt{+}\hldef{left.int)}\hlopt{/}\hlnum{2}\hldef{))}
 \end{alltt}
 \begin{verbatim}
-## [1] 8.8064
+## [1] 8.6664
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -193,19 +194,20 @@ We can compute the area using the Midpoint Rule as follows.
   \hlkwa{if}\hldef{(method} \hlopt{==} \hlsng{"Left"}\hldef{)\{}
     \hldef{(delta.x} \hlkwb{<-} \hldef{(b}\hlopt{-}\hldef{a)}\hlopt{/}\hldef{n.rect)}
     \hldef{left.points} \hlkwb{<-} \hldef{a} \hlopt{+} \hlnum{0}\hlopt{:}\hlnum{99}\hlopt{*}\hldef{(delta.x)}
-  \hldef{(area} \hlkwb{<-} \hlkwd{sum}\hldef{(delta.x}\hlopt{*}\hldef{(}\hlkwd{integrand}\hldef{(left.points))))}
+  \hldef{area} \hlkwb{<-} \hlkwd{sum}\hldef{(delta.x}\hlopt{*}\hldef{(}\hlkwd{integrand}\hldef{(left.points)))}
   \hldef{\}}\hlkwa{else if}\hldef{(method} \hlopt{==} \hlsng{"Right"}\hldef{)\{}
    \hldef{(delta.x} \hlkwb{<-} \hldef{(b}\hlopt{-}\hldef{a)}\hlopt{/}\hldef{n.rect)}
     \hldef{right.points} \hlkwb{<-} \hldef{a} \hlopt{+} \hlnum{1}\hlopt{:}\hlnum{100}\hlopt{*}\hldef{(delta.x)}
-\hldef{(area} \hlkwb{<-} \hlkwd{sum}\hldef{(delta.x}\hlopt{*}\hldef{(}\hlkwd{integrand}\hldef{(right.points))))}
+\hldef{area} \hlkwb{<-} \hlkwd{sum}\hldef{(delta.x}\hlopt{*}\hldef{(}\hlkwd{integrand}\hldef{(right.points)))}
   \hldef{\}}\hlkwa{else if}\hldef{(method} \hlopt{==} \hlsng{"Midpoint"}\hldef{)\{}
    \hldef{(delta.x} \hlkwb{<-} \hldef{(b}\hlopt{-}\hldef{a)}\hlopt{/}\hldef{n.rect)}
   \hldef{mid.points} \hlkwb{<-} \hldef{(left.points}\hlopt{+}\hldef{right.points)}\hlopt{/}\hlnum{2}
-\hldef{(area} \hlkwb{<-} \hlkwd{sum}\hldef{(delta.x}\hlopt{*}\hldef{(}\hlkwd{integrand}\hldef{(mid.points))))}
+\hldef{area} \hlkwb{<-} \hlkwd{sum}\hldef{(delta.x}\hlopt{*}\hldef{(}\hlkwd{integrand}\hldef{(mid.points)))}
   \hldef{\}}\hlkwa{else if}\hldef{(method} \hlopt{==} \hlsng{"Trapezoidial"}\hldef{)\{}
    \hldef{(delta.x} \hlkwb{<-} \hldef{(b}\hlopt{-}\hldef{a)}\hlopt{/}\hldef{n.rect)}
-  \hldef{trap.points} \hlkwb{<-}  \hldef{a} \hlopt{+} \hlnum{0}\hlopt{:}\hlnum{99}\hlopt{*}\hldef{(delta.x)}
-\hldef{(area} \hlkwb{<-} \hldef{(delta.x}\hlopt{/}\hlnum{2}\hldef{)}\hlopt{*}\hldef{(}\hlkwd{integrand}\hldef{(a)}\hlopt{+}\hlkwd{sum}\hldef{(}\hlnum{2}\hlopt{*}\hlkwd{integrand}\hldef{(trap.points))}\hlopt{+}\hlkwd{integrand}\hldef{(b)))}
+ \hldef{right.int} \hlkwb{<-} \hlkwd{integrand}\hldef{(right.points)}
+\hldef{left.int} \hlkwb{<-} \hlkwd{integrand}\hldef{(left.points)}
+\hldef{area} \hlkwb{<-} \hlkwd{sum}\hldef{(delta.x}\hlopt{*}\hldef{(right.int}\hlopt{+}\hldef{left.int)}\hlopt{/}\hlnum{2}\hldef{)}
   \hldef{\}}\hlkwa{else}\hldef{\{}
     \hlkwd{stop}\hldef{(}\hlsng{"Please select a valid method (e.g., 'Left', 'Right', 'Midpoint', 'Trapezoidial')"}\hldef{)}
   \hldef{\}}
@@ -223,7 +225,7 @@ We can compute the area using the Midpoint Rule as follows.
              \hlkwc{n.rect} \hldef{=} \hlnum{100}\hldef{)}
 \end{alltt}
 \begin{verbatim}
-## [1] 8.8064
+## [1] 8.6664
 \end{verbatim}
 \begin{alltt}
 \hlcom{######################################}

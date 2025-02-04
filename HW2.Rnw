@@ -68,7 +68,6 @@ mid.points <- (left.points+right.points)/2
   \item Write code that computes the area using the Trapezoidial Rule.\\
   \textbf{Solution:}
 <<size="scriptsize", warning=FALSE, message=FALSE>>=
-# Write code for answer here.
 right.int <- integrand(right.points)
 left.int <- integrand(left.points)
 (area <- sum(delta.x*(right.int+left.int)/2))
